@@ -108,12 +108,10 @@ namespace CollectionsMasterConsoleUI
             NumberPrinter(intList);
             Console.WriteLine("-------------------");
 
-            //Create a method that will remove all odd numbers from the list then print results
-
-            //NOTE - There is a bug in the the OddKiller Method -- Not ALL Even Numbers are Removed
+            //Create a method that will remove all odd numbers from the list then print the results
 
             Console.WriteLine("Odds Only!!");
-            OddKiller(intList);
+            EvenKiller(intList);
             NumberPrinter(intList);
 
             Console.WriteLine("------------------");
@@ -147,20 +145,13 @@ namespace CollectionsMasterConsoleUI
                 }                  
             }            
         }
-
-        private static void OddKiller(List<int> numberList)
-        //This method removes the odd numbers from the list
-        //NOTE - There is a bug in the the OddKiller Method -- Not ALL Even Numbers are Removed
+        private static void EvenKiller(List<int> numberList)
+        //This method removes ALL the Even numbers from the list
+        
         {
-            for (int i=0; i< numberList.Count; i++)
-            {
-               if (numberList[i] % 2 == 0)
-                {
-                    Console.WriteLine($"Removed {numberList[i]} ");
-                    numberList.Remove(numberList[i]);                   
-                }            
-            }            
+            numberList.RemoveAll(i => i % 2 == 0);
         }
+               
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
         //This method determines if the searchNumber is in the list
@@ -181,7 +172,7 @@ namespace CollectionsMasterConsoleUI
             Random rng = new Random();
             for (int i = 1; i <= 50; i++)
             {
-                int rgnInt = rng.Next(50);
+                int rgnInt = rng.Next(0,51);
                 numberList.Add(rgnInt);
             }
         }
@@ -192,7 +183,7 @@ namespace CollectionsMasterConsoleUI
             Random rng = new Random();
             for (int i= 0; i < numbers.Length; i++)
             {
-                int ranInt = rng.Next(50);
+                int ranInt = rng.Next(0,51);
                 numbers[i] = ranInt;
             }        
         }        
